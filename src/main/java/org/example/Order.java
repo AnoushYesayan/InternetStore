@@ -2,6 +2,6 @@ package org.example;
 
 public class Order {
     private int id;
-    private double name;
+    private String name;
     private long count;
 }

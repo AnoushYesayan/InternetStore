@@ -7,6 +7,7 @@ public class Order {
     static List<Order> list = new ArrayList<>();
     private int id;
     private String brand;
+    private String orderNumber;
     private String productName;
     private double price;
     private int quantity;
@@ -46,10 +47,10 @@ public class Order {
         return list;
     }
 
-    public static List<Order> getByBuyersName(String fullName) {
+    public static List<Order> getOrder(String order) {
         List<Order> newListName = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).buyersFullName.equals(fullName)) {
+            if (list.get(i).buyersFullName.equals(order) || list.get(i).orderNumber.equals(order)) {
                 newListName.add(list.get(i));
             }
         }

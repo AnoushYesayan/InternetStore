@@ -172,4 +172,14 @@ public class Order {
                 "category: " + category + '\n' +
                 "paid: " + paid;
     }
+
+    public Order getId(int id) {
+        List<Integer> getId = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).id == id) {
+                return list.get(i);
+            }
+        }
+        return null;
+    }
 }

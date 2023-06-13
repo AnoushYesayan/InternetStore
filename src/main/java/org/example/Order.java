@@ -21,7 +21,7 @@ public class Order {
 
     public Order(String buyersFullName, int id, String brand, String productName, double price, int quantity,
                  boolean wasItBoughtWithDiscount, int discount, String colour, Category category, double paid,
-                 String orderStatus) {
+                 String orderStatus, String orderNumber) {
         this.id = id;
         this.brand = brand;
         this.productName = productName;
@@ -34,6 +34,7 @@ public class Order {
         this.category = category;
         this.setPaid(wasItBoughtWithDiscount);
         this.orderStatus = orderStatus;
+        this.orderNumber = orderNumber;
     }
 
     public static void addOrder(Order order) {
@@ -58,6 +59,22 @@ public class Order {
             return null;
         }
         return newListName;
+    }
+
+    public static List<Order> paging(int itemsPerPage, int page) {
+        List<Order> orderOfPage = new ArrayList<>();
+        for (int i = itemsPerPage - page - 1; i < itemsPerPage * page; i++) {
+            orderOfPage.add(list.get(i));
+        }
+        return orderOfPage;
+    }
+
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
     public double getPaid() {
@@ -95,7 +112,6 @@ public class Order {
     public void setBrand(String brand) {
         this.brand = brand;
     }
-
 
     public String getProductName() {
         return productName;

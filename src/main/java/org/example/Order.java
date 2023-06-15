@@ -32,7 +32,7 @@ public class Order {
         this.setDiscount(wasItBoughtWithDiscount, discount);
         this.colour = colour;
         this.category = category;
-        this.setPaid(wasItBoughtWithDiscount);
+        this.setPaid(wasItBoughtWithDiscount, paid);
         this.orderStatus = orderStatus;
         this.orderNumber = orderNumber;
     }
@@ -48,10 +48,11 @@ public class Order {
         return list;
     }
 
-    public static List<Order> getOrder(String order) {
+    public static List<Order> getOrder(String orderNumberOrBuyersFullName) {
         List<Order> newListName = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).buyersFullName.equals(order) || list.get(i).orderNumber.equals(order)) {
+            if (list.get(i).buyersFullName.equals(orderNumberOrBuyersFullName) || list.get(i).orderNumber
+                    .equals(orderNumberOrBuyersFullName)) {
                 newListName.add(list.get(i));
             }
         }
@@ -81,11 +82,11 @@ public class Order {
         return paid;
     }
 
-    public void setPaid(boolean wasItBoughtWithDiscount) {
+    public void setPaid(boolean wasItBoughtWithDiscount, double paid) {
         if (wasItBoughtWithDiscount) {
             this.paid = this.price - (this.price * this.discount / 100);
         } else {
-            this.paid = price;
+            this.paid = paid;
         }
     }
 

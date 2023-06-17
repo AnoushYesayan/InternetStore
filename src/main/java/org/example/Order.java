@@ -1,5 +1,6 @@
 package org.example;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,11 +18,12 @@ public class Order {
     private String colour;
     private Category category;
     private double paid;
-    private String orderStatus;
+    private Status orderStatus;
+    private LocalDate dateOfOrder;
 
     public Order(String buyersFullName, int id, String brand, String productName, double price, int quantity,
                  boolean wasItBoughtWithDiscount, int discount, String colour, Category category, double paid,
-                 String orderStatus, String orderNumber) {
+                 Status orderStatus, String orderNumber) {
         this.id = id;
         this.brand = brand;
         this.productName = productName;

@@ -48,7 +48,7 @@ public class Order {
         return list;
     }
 
-    public static List<Order> getOrder(String orderNumberOrBuyersFullName) {
+    public static List<Order> getOrderByNumberOrBuyersFullName(String orderNumberOrBuyersFullName) {
         List<Order> newListName = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).buyersFullName.equals(orderNumberOrBuyersFullName) || list.get(i).orderNumber
@@ -63,11 +63,14 @@ public class Order {
     }
 
     public static List<Order> paging(int itemsPerPage, int page) {
-        List<Order> orderOfPage = new ArrayList<>();
-        for (int i = itemsPerPage - page - 1; i < itemsPerPage * page; i++) {
-            orderOfPage.add(list.get(i));
+        List<Order> ordersOfPage = new ArrayList<>();
+        for (int i = itemsPerPage * (page - 1); i < itemsPerPage * page && i < list.size(); i++) {
+            ordersOfPage.add(list.get(i));
         }
-        return orderOfPage;
+        if (ordersOfPage.isEmpty()) {
+            System.out.println("There is no more orders");
+        }
+        return ordersOfPage;
     }
 
     public String getOrderNumber() {

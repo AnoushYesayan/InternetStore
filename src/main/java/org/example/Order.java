@@ -192,7 +192,6 @@ public class Order {
                 "ProductName: " + productName + '\n' +
                 "Price: " + price + '\n' +
                 "Quantity: " + quantity + '\n' +
-                "WasItBoughtWithDiscount: " + wasItBoughtWithDiscount + '\n' +
                 "Discount: " + discount + '\n' +
                 "Colour: " + colour + '\n' +
                 "Paid: " + paid + '\n' +

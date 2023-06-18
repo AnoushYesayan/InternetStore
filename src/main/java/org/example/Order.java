@@ -19,11 +19,11 @@ public class Order {
     private Category category;
     private double paid;
     private Status orderStatus;
-    private LocalDate dateOfOrder;
+    private LocalDate orderDate;
 
-    public Order(String buyersFullName, int id, String brand, String productName, double price, int quantity,
-                 boolean wasItBoughtWithDiscount, int discount, String colour, Category category, double paid,
-                 Status orderStatus, String orderNumber) {
+    public Order(int id, String orderNumber, String buyersFullName, LocalDate orderDate, Category category, String brand,
+                 String productName, double price, int quantity, boolean wasItBoughtWithDiscount, int discount,
+                 String colour,  double paid, Status orderStatus) {
         this.id = id;
         this.brand = brand;
         this.productName = productName;
@@ -37,6 +37,7 @@ public class Order {
         this.setPaid(wasItBoughtWithDiscount, paid);
         this.orderStatus = orderStatus;
         this.orderNumber = orderNumber;
+        this.orderDate = orderDate;
     }
 
     public static void addOrder(Order order) {
@@ -89,9 +90,9 @@ public class Order {
 
     public void setPaid(boolean wasItBoughtWithDiscount, double paid) {
         if (wasItBoughtWithDiscount) {
-            this.paid = this.price - (this.price * this.discount / 100);
+            this.paid = this.quantity * (this.price - (this.price * this.discount / 100));
         } else {
-            this.paid = paid;
+            this.paid = this.quantity * paid;
         }
     }
 
@@ -182,17 +183,20 @@ public class Order {
     @Override
     public String toString() {
         return '\n' +
-                "id: " + id + '\n' +
-                "brand: " + brand + '\n' +
-                "productName: " + productName + '\n' +
-                "quantity: " + quantity + '\n' +
-                "price: " + price + '\n' +
-                "buyersFullName: " + buyersFullName + '\n' +
-                "wasItBoughtWithDiscount: " + wasItBoughtWithDiscount + '\n' +
-                "discount: " + discount + '\n' +
-                "colour: " + colour + '\n' +
-                "category: " + category + '\n' +
-                "paid: " + paid;
+                "ID: " + id + '\n' +
+                "OrderNumber: " + orderNumber + '\n' +
+                "BuyersFullName: " + buyersFullName + '\n' +
+                "OrderDate: " + orderDate + '\n' +
+                "Category: " + category + '\n' +
+                "Brand: " + brand + '\n' +
+                "ProductName: " + productName + '\n' +
+                "Price: " + price + '\n' +
+                "Quantity: " + quantity + '\n' +
+                "WasItBoughtWithDiscount: " + wasItBoughtWithDiscount + '\n' +
+                "Discount: " + discount + '\n' +
+                "Colour: " + colour + '\n' +
+                "Paid: " + paid + '\n' +
+                "Status: " + orderStatus;
     }
 
     public Order getId(int id) {

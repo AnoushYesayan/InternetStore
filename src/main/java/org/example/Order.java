@@ -22,6 +22,10 @@ public class Order {
     private LocalDate orderDate;
     private int canceledOrder;
 
+    public Order() {
+
+    }
+
     public Order(int id, String orderNumber, String buyersFullName, LocalDate orderDate, Category category, String brand,
                  String productName, double price, int quantity, boolean wasItBoughtWithDiscount, int discount,
                  String colour, double paid, Status orderStatus) {
@@ -185,7 +189,7 @@ public class Order {
         return orderStatus;
     }
 
-    public  String report() {
+    public String report() {
         int countOfDeliveredOrders = 0;
         int countOfShippedOrders = 0;
         int ordersWithDiscount = 0;
@@ -209,6 +213,7 @@ public class Order {
                 "Total revenue: " + totalRevenue + '\n' +
                 list;
     }
+
     @Override
     public String toString() {
         return '\n' +
@@ -237,14 +242,11 @@ public class Order {
         return null;
     }
 
-    public String orderShipped(){
-        if(Status.SHIPPED.equals(2)){
+    public String orderShipped() {
+        if (Status.SHIPPED.equals(2)) {
             return "Order is already Shipped";
         } else {
             return "There is some problem, please try again";
         }
     }
-
-
-
 }

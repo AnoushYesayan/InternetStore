@@ -23,7 +23,7 @@ public class Order {
 
     public Order(int id, String orderNumber, String buyersFullName, LocalDate orderDate, Category category, String brand,
                  String productName, double price, int quantity, boolean wasItBoughtWithDiscount, int discount,
-                 String colour,  double paid, Status orderStatus) {
+                 String colour, double paid, Status orderStatus) {
         this.id = id;
         this.brand = brand;
         this.productName = productName;
@@ -180,6 +180,10 @@ public class Order {
         this.category = category;
     }
 
+    public Status getOrderStatus() {
+        return orderStatus;
+    }
+
     @Override
     public String toString() {
         return '\n' +
@@ -207,4 +211,15 @@ public class Order {
         }
         return null;
     }
+
+    public String orderShipped(){
+        if(Status.SHIPPED.equals(2)){
+            return "Order is already Shipped";
+        } else {
+            return "There is some problem, please try again";
+        }
+    }
+
+
+
 }

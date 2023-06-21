@@ -20,6 +20,7 @@ public class Order {
     private double paid;
     private Status orderStatus;
     private LocalDate orderDate;
+    private int canceledOrder;
 
     public Order(int id, String orderNumber, String buyersFullName, LocalDate orderDate, Category category, String brand,
                  String productName, double price, int quantity, boolean wasItBoughtWithDiscount, int discount,

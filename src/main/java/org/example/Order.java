@@ -184,6 +184,30 @@ public class Order {
         return orderStatus;
     }
 
+    public  String report() {
+        int countOfDeliveredOrders = 0;
+        int countOfShippedOrders = 0;
+        int ordersWithDiscount = 0;
+        int totalRevenue = 0;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).orderStatus == Status.DELIVERED)
+                countOfDeliveredOrders++;
+            else if (list.get(i).orderStatus == Status.SHIPPED) {
+                countOfShippedOrders++;
+            }
+            if (list.get(i).wasItBoughtWithDiscount) {
+                ordersWithDiscount++;
+            }
+            totalRevenue += list.get(i).paid;
+        }
+        return "Delivered orders: " + countOfDeliveredOrders + '\n' +
+                "Shipped orders: " + countOfShippedOrders + '\n' +
+                "Canceled orders: " + '\n' +
+                "Total: " + list.size() + '\n' +
+                "Discounted orders: " + ordersWithDiscount + '\n' +
+                "Total revenue: " + totalRevenue + '\n' +
+                list;
+    }
     @Override
     public String toString() {
         return '\n' +

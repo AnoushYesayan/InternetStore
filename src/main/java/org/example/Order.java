@@ -43,6 +43,7 @@ public class Order {
         this.orderStatus = orderStatus;
         this.orderNumber = orderNumber;
         this.orderDate = orderDate;
+        
     }
 
     public static void addOrder(Order order) {
